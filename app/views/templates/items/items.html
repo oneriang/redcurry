@@ -1,0 +1,90 @@
+<form action="api/items" class="" method="POST" accept-charset="utf-8">
+	<div class="box">
+		<!--[form:project]-->
+		<p>
+			<label for="subject">名前</label>
+			<input name="Items[subject]" maxlength="30" type="text" id="subject">
+		</p>
+		<p>
+			<label for="description">説明</label>
+			<textarea name="Items[description]" class="wiki-edit" rows="5" cols="30" id="description"></textarea>
+		</p>
+		<P>
+			<fieldset class="box">
+				<legend>
+					カスタムフィールド
+				</legend>
+
+				<p>
+					<?php
+					// var_dump($customFields);
+					$count = count($customFields);
+					for ($i=0; $i<$count; $i++) {
+					echo '<label class="floating">';
+					echo '<input type="checkbox" name="data[Items][custom_field_ids][]" value="' . $customFields[$i]["id"] . '" />';
+					echo $customFields[$i]["name"];
+					echo '</label>';
+					echo '<span>';
+					echo '　'.'(' . $customFields[$i]["description"] . ')';
+					echo '</span>';
+					echo '<br/>';
+					}
+					?>
+				</p>
+			</fieldset>
+		</p>
+		<div class="submit">
+			<input type="submit" value="保存">
+		</div>
+	</div>
+</form>
+
+<form action="api/items" class="rest" method="PUT" accept-charset="utf-8">
+	<div class="box">
+		<!--[form:project]-->
+		<p>
+			<label for="subject">名前</label>
+			<input name="subject" maxlength="30" type="text" id="subject">
+		</p>
+		<p>
+			<label for="description">説明</label>
+			<textarea name="description" class="wiki-edit" rows="5" cols="30" id="description"></textarea>
+		</p>
+		<P>
+			<fieldset class="box">
+				<legend>
+					カスタムフィールド
+				</legend>
+
+				<p>
+					<?php
+					// var_dump($customFields);
+					$count = count($customFields);
+					for ($i=0; $i<$count; $i++) {
+					echo '<label class="floating">';
+					echo '<input type="checkbox" name="data[Items][custom_field_ids][]" value="' . $customFields[$i]["id"] . '" />';
+					echo $customFields[$i]["name"];
+					echo '</label>';
+					}
+					?>
+				</p>
+			</fieldset>
+		</p>
+		<div class="submit">
+			<input type="submit" value="更新">
+		</div>
+	</div>
+</form>
+
+<form action="api/items" class="rest" method="DELETE" accept-charset="utf-8">
+	<div class="box">
+		<!--[form:project]-->
+		<p>
+			<label for="subject">名前</label>
+			<input name="subject" maxlength="30" type="text" id="subject">
+		</p>
+		<div class="submit">
+			<input type="submit" value="削除">
+		</div>
+	</div>
+</form>

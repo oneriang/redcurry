@@ -1,0 +1,513 @@
+<h2>新しいカスタムフィールドを作成 (チケット)</h2>
+
+<form action="api/custom_fields" class="tabular" id="CustomFieldAddForm" method="post" accept-charset="utf-8">
+	<div style="display:none;">
+		<input type="hidden" name="_method" value="POST"/>
+
+		<input type="hidden" name="data[Method]" value="POST"/>
+
+	</div>
+	<script type="text/javascript">
+		//<![CDATA[
+		function toggle_custom_field_format() {
+			format = $("CustomFieldFieldFormat");
+			p_length = $("CustomFieldMinLength");
+			p_regexp = $("CustomFieldRegexp");
+			p_values = $("CustomFieldPossibleValues");
+			p_searchable = $("CustomFieldSearchable");
+			p_default = $("CustomFieldDefaultValue");
+
+			p_default.setAttribute('type', 'text');
+			Element.show(p_default.parentNode);
+
+			switch (format.value) {
+			case "list":
+				Element.hide(p_length.parentNode);
+				Element.hide(p_regexp.parentNode);
+				if (p_searchable)
+					Element.show(p_searchable.parentNode);
+				Element.show(p_values);
+				break;
+			case "bool":
+				p_default.setAttribute('type', 'checkbox');
+				Element.hide(p_length.parentNode);
+				Element.hide(p_regexp.parentNode);
+				if (p_searchable)
+					Element.hide(p_searchable.parentNode);
+				Element.hide(p_values);
+				break;
+			case "date":
+				Element.hide(p_length.parentNode);
+				Element.hide(p_regexp.parentNode);
+				if (p_searchable)
+					Element.hide(p_searchable.parentNode);
+				Element.hide(p_values);
+				break;
+			case "float":
+			case "int":
+				Element.show(p_length.parentNode);
+				Element.show(p_regexp.parentNode);
+				if (p_searchable)
+					Element.hide(p_searchable.parentNode);
+				Element.hide(p_values);
+				break;
+			default:
+				Element.show(p_length.parentNode);
+				Element.show(p_regexp.parentNode);
+				if (p_searchable)
+					Element.show(p_searchable.parentNode);
+				Element.hide(p_values);
+				break;
+			}
+		}
+
+		function addValueField() {
+			var f = $$('p#CustomFieldPossibleValues span');
+			p = document.getElementById("CustomFieldPossibleValues");
+			var v = f[0].cloneNode(true);
+			v.childNodes[0].value = "";
+			p.appendChild(v);
+		}
+
+		function deleteValueField(e) {
+			var f = $$('p#CustomFieldPossibleValues span');
+			if (f.length == 1) {
+				e.parentNode.childNodes[0].value = "";
+			} else {
+				Element.remove(e.parentNode);
+			}
+		}
+
+		//]]>
+	</script>
+	<style type="text/css">
+		div.checkbox {
+			display: inline;
+		}
+	</style>
+
+	<div class="box">
+		<p>
+			<label for="CustomFieldName">名前<span class="required"> *</span></label>
+			<input name="data[CustomField][name]" maxlength="30" type="text" id="CustomFieldName" required="required"/>
+		</p>
+		<p>
+			<label for="CustomFieldDescription">説明<span class="required"> *</span></label>
+			<textarea name="data[CustomField][description]" maxlength="30" type="text" id="CustomFieldDescription" required="required"></textarea>
+		</p>
+		<p>
+			<label for="CustomFieldFieldFormat">書式</label>
+			<select name="data[CustomField][field_format]" onchange="toggle_custom_field_format();" id="CustomFieldFieldFormat" required="required">
+				<option value="string">テキスト</option>
+				<option value="text">長いテキスト</option>
+				<option value="int">整数</option>
+				<option value="float">小数</option>
+				<option value="list">リストから選択</option>
+				<option value="date">日付</option>
+				<option value="bool">真偽値</option>
+			</select>
+		</p>
+		<p>
+			<label for="CustomFieldMinLength">最小値 - 最大値の長さ</label>
+			<input name="data[CustomField][min_length]" size="5" maxlength="11" type="text" id="CustomFieldMinLength"/>
+			-
+			<input name="data[CustomField][max_length]" size="5" maxlength="11" type="text" id="CustomFieldMaxLength"/>
+			<br>
+			(0だと無制限になります)
+		</p>
+		<p>
+			<label for="CustomFieldRegexp">正規表現</label>
+			<input name="data[CustomField][regexp]" size="50" maxlength="255" type="text" id="CustomFieldRegexp"/>
+			<br>
+			(例) ^[A-Z0-9]+$)
+		</p>
+		<p id="CustomFieldPossibleValues">
+			<label>選択肢
+				<input type="image" src="/candycane/img/add.png" onclick="addValueField();return false"/>
+			</label>
+			<span>
+				<input name="data[CustomField][possible_values][]" value="" size="30" type="text" id="CustomFieldPossibleValues[]"/>
+				<input type="image" src="/candycane/img/delete.png" onclick="deleteValueField(this);return false"/>
+				<br />
+			</span>
+		</p>
+		<p>
+			<label for="CustomFieldDefaultValue">デフォルトのステータス</label>
+			<input name="data[CustomField][default_value]" type="text" id="CustomFieldDefaultValue" required="required"/>
+		</p>
+	</div>
+
+	<div class="box">
+		<p>
+			<label for="CustomFieldIsRequired">必須</label>
+			<input type="hidden" name="data[CustomField][is_required]" id="CustomFieldIsRequired_" value="0"/>
+			<input type="checkbox" name="data[CustomField][is_required]" value="1" id="CustomFieldIsRequired"/>
+		</p>
+		<p>
+			<label for="CustomFieldIsForAll">全プロジェクト向け</label>
+			<input type="hidden" name="data[CustomField][is_for_all]" id="CustomFieldIsForAll_" value="0"/>
+			<input type="checkbox" name="data[CustomField][is_for_all]" value="1" id="CustomFieldIsForAll"/>
+		</p>
+		<p>
+			<label for="CustomFieldIsFilter">フィルタとして使う</label>
+			<input type="hidden" name="data[CustomField][is_filter]" id="CustomFieldIsFilter_" value="0"/>
+			<input type="checkbox" name="data[CustomField][is_filter]" value="1" id="CustomFieldIsFilter"/>
+		</p>
+		<p>
+			<label for="CustomFieldSearchable">検索条件に設定可能とする</label>
+			<input type="hidden" name="data[CustomField][searchable]" id="CustomFieldSearchable_" value="0"/>
+			<input type="checkbox" name="data[CustomField][searchable]" value="1" id="CustomFieldSearchable"/>
+		</p>
+	</div>
+	<script type="text/javascript">
+		//<![CDATA[
+		toggle_custom_field_format();
+		//]]>
+	</script>
+	<input type="hidden" name="data[CustomField][type]" value="IssueCustomField" id="CustomFieldType"/>
+	<div class="submit">
+		<input type="submit" value="保存"/>
+	</div>
+</form>
+
+<h2>新しいカスタムフィールドを作成 (チケット)</h2>
+
+<form action="api/custom_fields" class="tabular" id="CustomFieldAddForm" method="post" accept-charset="utf-8">
+	<div style="display:none;">
+
+		<input type="hidden" name="_method" value="POST"/>
+
+		<input type="hidden" name="data[Method]" value="PUT"/>
+
+	</div>
+	<script type="text/javascript">
+		//<![CDATA[
+		function toggle_custom_field_format() {
+			format = $("CustomFieldFieldFormat");
+			p_length = $("CustomFieldMinLength");
+			p_regexp = $("CustomFieldRegexp");
+			p_values = $("CustomFieldPossibleValues");
+			p_searchable = $("CustomFieldSearchable");
+			p_default = $("CustomFieldDefaultValue");
+
+			p_default.setAttribute('type', 'text');
+			Element.show(p_default.parentNode);
+
+			switch (format.value) {
+			case "list":
+				Element.hide(p_length.parentNode);
+				Element.hide(p_regexp.parentNode);
+				if (p_searchable)
+					Element.show(p_searchable.parentNode);
+				Element.show(p_values);
+				break;
+			case "bool":
+				p_default.setAttribute('type', 'checkbox');
+				Element.hide(p_length.parentNode);
+				Element.hide(p_regexp.parentNode);
+				if (p_searchable)
+					Element.hide(p_searchable.parentNode);
+				Element.hide(p_values);
+				break;
+			case "date":
+				Element.hide(p_length.parentNode);
+				Element.hide(p_regexp.parentNode);
+				if (p_searchable)
+					Element.hide(p_searchable.parentNode);
+				Element.hide(p_values);
+				break;
+			case "float":
+			case "int":
+				Element.show(p_length.parentNode);
+				Element.show(p_regexp.parentNode);
+				if (p_searchable)
+					Element.hide(p_searchable.parentNode);
+				Element.hide(p_values);
+				break;
+			default:
+				Element.show(p_length.parentNode);
+				Element.show(p_regexp.parentNode);
+				if (p_searchable)
+					Element.show(p_searchable.parentNode);
+				Element.hide(p_values);
+				break;
+			}
+		}
+
+		function addValueField() {
+			var f = $$('p#CustomFieldPossibleValues span');
+			p = document.getElementById("CustomFieldPossibleValues");
+			var v = f[0].cloneNode(true);
+			v.childNodes[0].value = "";
+			p.appendChild(v);
+		}
+
+		function deleteValueField(e) {
+			var f = $$('p#CustomFieldPossibleValues span');
+			if (f.length == 1) {
+				e.parentNode.childNodes[0].value = "";
+			} else {
+				Element.remove(e.parentNode);
+			}
+		}
+
+		//]]>
+	</script>
+	<style type="text/css">
+		div.checkbox {
+			display: inline;
+		}
+	</style>
+
+	<div class="box">
+		<p>
+			<label for="CustomFieldName">名前<span class="required"> *</span></label>
+			<input name="data[CustomField][name]" maxlength="30" type="text" id="CustomFieldName" required="required"/>
+		</p>
+		<p>
+			<label for="CustomFieldDescription">説明<span class="required"> *</span></label>
+			<textarea name="data[CustomField][description]" type="text" id="CustomFieldDescription" required="required"></textarea>
+		</p>
+		<p>
+			<label for="CustomFieldFieldFormat">書式</label>
+			<select name="data[CustomField][field_format]" onchange="toggle_custom_field_format();" id="CustomFieldFieldFormat" required="required">
+				<option value="string">テキスト</option>
+				<option value="text">長いテキスト</option>
+				<option value="int">整数</option>
+				<option value="float">小数</option>
+				<option value="list">リストから選択</option>
+				<option value="date">日付</option>
+				<option value="bool">真偽値</option>
+			</select>
+		</p>
+		<p>
+			<label for="CustomFieldMinLength">最小値 - 最大値の長さ</label>
+			<input name="data[CustomField][min_length]" size="5" maxlength="11" type="text" id="CustomFieldMinLength"/>
+			-
+			<input name="data[CustomField][max_length]" size="5" maxlength="11" type="text" id="CustomFieldMaxLength"/>
+			<br>
+			(0だと無制限になります)
+		</p>
+		<p>
+			<label for="CustomFieldRegexp">正規表現</label>
+			<input name="data[CustomField][regexp]" size="50" maxlength="255" type="text" id="CustomFieldRegexp"/>
+			<br>
+			(例) ^[A-Z0-9]+$)
+		</p>
+		<p id="CustomFieldPossibleValues">
+			<label>選択肢
+				<input type="image" src="/candycane/img/add.png" onclick="addValueField();return false"/>
+			</label>
+			<span>
+				<input name="data[CustomField][possible_values][]" value="" size="30" type="text" id="CustomFieldPossibleValues[]"/>
+				<input type="image" src="/candycane/img/delete.png" onclick="deleteValueField(this);return false"/>
+				<br />
+			</span>
+		</p>
+		<p>
+			<label for="CustomFieldDefaultValue">デフォルトのステータス</label>
+			<input name="data[CustomField][default_value]" type="text" id="CustomFieldDefaultValue" required="required"/>
+		</p>
+	</div>
+
+	<div class="box">
+		<p>
+			<label for="CustomFieldIsRequired">必須</label>
+			<input type="hidden" name="data[CustomField][is_required]" id="CustomFieldIsRequired_" value="0"/>
+			<input type="checkbox" name="data[CustomField][is_required]" value="1" id="CustomFieldIsRequired"/>
+		</p>
+		<p>
+			<label for="CustomFieldIsForAll">全プロジェクト向け</label>
+			<input type="hidden" name="data[CustomField][is_for_all]" id="CustomFieldIsForAll_" value="0"/>
+			<input type="checkbox" name="data[CustomField][is_for_all]" value="1" id="CustomFieldIsForAll"/>
+		</p>
+		<p>
+			<label for="CustomFieldIsFilter">フィルタとして使う</label>
+			<input type="hidden" name="data[CustomField][is_filter]" id="CustomFieldIsFilter_" value="0"/>
+			<input type="checkbox" name="data[CustomField][is_filter]" value="1" id="CustomFieldIsFilter"/>
+		</p>
+		<p>
+			<label for="CustomFieldSearchable">検索条件に設定可能とする</label>
+			<input type="hidden" name="data[CustomField][searchable]" id="CustomFieldSearchable_" value="0"/>
+			<input type="checkbox" name="data[CustomField][searchable]" value="1" id="CustomFieldSearchable"/>
+		</p>
+	</div>
+	<script type="text/javascript">
+		//<![CDATA[
+		toggle_custom_field_format();
+		//]]>
+	</script>
+	<input type="hidden" name="data[CustomField][type]" value="IssueCustomField" id="CustomFieldType"/>
+	<div class="submit">
+		<input type="submit" value="保存"/>
+	</div>
+</form>
+
+<h2>新しいカスタムフィールドを作成 (チケット)</h2>
+
+<form action="api/custom_fields" class="tabular" id="CustomFieldAddForm" method="post" accept-charset="utf-8">
+	<div style="display:none;">
+
+		<input type="hidden" name="_method" value="POST"/>
+
+		<input type="hidden" name="data[Method]" value="DELETE"/>
+
+	</div>
+	<script type="text/javascript">
+		//<![CDATA[
+		function toggle_custom_field_format() {
+			format = $("CustomFieldFieldFormat");
+			p_length = $("CustomFieldMinLength");
+			p_regexp = $("CustomFieldRegexp");
+			p_values = $("CustomFieldPossibleValues");
+			p_searchable = $("CustomFieldSearchable");
+			p_default = $("CustomFieldDefaultValue");
+
+			p_default.setAttribute('type', 'text');
+			Element.show(p_default.parentNode);
+
+			switch (format.value) {
+			case "list":
+				Element.hide(p_length.parentNode);
+				Element.hide(p_regexp.parentNode);
+				if (p_searchable)
+					Element.show(p_searchable.parentNode);
+				Element.show(p_values);
+				break;
+			case "bool":
+				p_default.setAttribute('type', 'checkbox');
+				Element.hide(p_length.parentNode);
+				Element.hide(p_regexp.parentNode);
+				if (p_searchable)
+					Element.hide(p_searchable.parentNode);
+				Element.hide(p_values);
+				break;
+			case "date":
+				Element.hide(p_length.parentNode);
+				Element.hide(p_regexp.parentNode);
+				if (p_searchable)
+					Element.hide(p_searchable.parentNode);
+				Element.hide(p_values);
+				break;
+			case "float":
+			case "int":
+				Element.show(p_length.parentNode);
+				Element.show(p_regexp.parentNode);
+				if (p_searchable)
+					Element.hide(p_searchable.parentNode);
+				Element.hide(p_values);
+				break;
+			default:
+				Element.show(p_length.parentNode);
+				Element.show(p_regexp.parentNode);
+				if (p_searchable)
+					Element.show(p_searchable.parentNode);
+				Element.hide(p_values);
+				break;
+			}
+		}
+
+		function addValueField() {
+			var f = $$('p#CustomFieldPossibleValues span');
+			p = document.getElementById("CustomFieldPossibleValues");
+			var v = f[0].cloneNode(true);
+			v.childNodes[0].value = "";
+			p.appendChild(v);
+		}
+
+		function deleteValueField(e) {
+			var f = $$('p#CustomFieldPossibleValues span');
+			if (f.length == 1) {
+				e.parentNode.childNodes[0].value = "";
+			} else {
+				Element.remove(e.parentNode);
+			}
+		}
+
+		//]]>
+	</script>
+	<style type="text/css">
+		div.checkbox {
+			display: inline;
+		}
+	</style>
+
+	<div class="box">
+		<p>
+			<label for="CustomFieldName">名前<span class="required"> *</span></label>
+			<input name="data[CustomField][name]" maxlength="30" type="text" id="CustomFieldName" required="required"/>
+		</p>
+		<p>
+			<label for="CustomFieldFieldFormat">書式</label>
+			<select name="data[CustomField][field_format]" onchange="toggle_custom_field_format();" id="CustomFieldFieldFormat" required="required">
+				<option value="string">テキスト</option>
+				<option value="text">長いテキスト</option>
+				<option value="int">整数</option>
+				<option value="float">小数</option>
+				<option value="list">リストから選択</option>
+				<option value="date">日付</option>
+				<option value="bool">真偽値</option>
+			</select>
+		</p>
+		<p>
+			<label for="CustomFieldMinLength">最小値 - 最大値の長さ</label>
+			<input name="data[CustomField][min_length]" size="5" maxlength="11" type="text" id="CustomFieldMinLength"/>
+			-
+			<input name="data[CustomField][max_length]" size="5" maxlength="11" type="text" id="CustomFieldMaxLength"/>
+			<br>
+			(0だと無制限になります)
+		</p>
+		<p>
+			<label for="CustomFieldRegexp">正規表現</label>
+			<input name="data[CustomField][regexp]" size="50" maxlength="255" type="text" id="CustomFieldRegexp"/>
+			<br>
+			(例) ^[A-Z0-9]+$)
+		</p>
+		<p id="CustomFieldPossibleValues">
+			<label>選択肢
+				<input type="image" src="/candycane/img/add.png" onclick="addValueField();return false"/>
+			</label>
+			<span>
+				<input name="data[CustomField][possible_values][]" value="" size="30" type="text" id="CustomFieldPossibleValues[]"/>
+				<input type="image" src="/candycane/img/delete.png" onclick="deleteValueField(this);return false"/>
+				<br />
+			</span>
+		</p>
+		<p>
+			<label for="CustomFieldDefaultValue">デフォルトのステータス</label>
+			<input name="data[CustomField][default_value]" type="text" id="CustomFieldDefaultValue" required="required"/>
+		</p>
+	</div>
+
+	<div class="box">
+		<p>
+			<label for="CustomFieldIsRequired">必須</label>
+			<input type="hidden" name="data[CustomField][is_required]" id="CustomFieldIsRequired_" value="0"/>
+			<input type="checkbox" name="data[CustomField][is_required]" value="1" id="CustomFieldIsRequired"/>
+		</p>
+		<p>
+			<label for="CustomFieldIsForAll">全プロジェクト向け</label>
+			<input type="hidden" name="data[CustomField][is_for_all]" id="CustomFieldIsForAll_" value="0"/>
+			<input type="checkbox" name="data[CustomField][is_for_all]" value="1" id="CustomFieldIsForAll"/>
+		</p>
+		<p>
+			<label for="CustomFieldIsFilter">フィルタとして使う</label>
+			<input type="hidden" name="data[CustomField][is_filter]" id="CustomFieldIsFilter_" value="0"/>
+			<input type="checkbox" name="data[CustomField][is_filter]" value="1" id="CustomFieldIsFilter"/>
+		</p>
+		<p>
+			<label for="CustomFieldSearchable">検索条件に設定可能とする</label>
+			<input type="hidden" name="data[CustomField][searchable]" id="CustomFieldSearchable_" value="0"/>
+			<input type="checkbox" name="data[CustomField][searchable]" value="1" id="CustomFieldSearchable"/>
+		</p>
+	</div>
+	<script type="text/javascript">
+		//<![CDATA[
+		toggle_custom_field_format();
+		//]]>
+	</script>
+	<input type="hidden" name="data[CustomField][type]" value="IssueCustomField" id="CustomFieldType"/>
+	<div class="submit">
+		<input type="submit" value="保存"/>
+	</div>
+</form>
