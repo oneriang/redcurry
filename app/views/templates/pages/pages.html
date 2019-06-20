@@ -5,11 +5,10 @@
 
 		<!--[form:project]-->
 		<p>
-			<label for="subject"><?php echo $items[0]['subject']; ?></label>
 			<input type="hidden" name="data[page][id]" value="<?php echo $pageId; ?>" id="PageId"/>
 			<input type="hidden" name="data[page][value_id]" value="<?php echo $valueId; ?>" id="ValueId"/>
 		</p>
-
+<!--
 		<p>
 			<fieldset class="box">
 				<legend>
@@ -42,11 +41,11 @@
 				</p>
 			</fieldset>
 		</p>
-
+-->
 		<P>
 			<fieldset class="box">
 				<legend>
-					カスタムフィールド
+					<?php echo $pageId; ?>\<?php echo $valueId; ?>
 				</legend>
 
 				<p>
@@ -70,4 +69,3 @@
 		</div>
 	</div>
 </form>
-

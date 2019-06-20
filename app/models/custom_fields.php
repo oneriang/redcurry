@@ -2,6 +2,13 @@
 
 class CustomFields extends Model
 {
+	public function getData($params)
+	{
+		$sel = $this -> select();
+		$sel -> where('id', $params['id']);
+		$rows = $sel -> fetchRow(PDO::FETCH_ASSOC);
+		return $rows;
+	}
 
 	public function getList()
 	{

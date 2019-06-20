@@ -1,0 +1,391 @@
+[2019-06-17 02:07:40] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/dispatcher.php LINE:178 The path "index/" is not found.
+#0 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#1 {main}
+[2019-06-17 02:07:58] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/db_adapter_abstract.php LINE:70 SQLSTATE[HY000] [14] unable to open database file
+#0 /storage/emulated/0/www/public/curry/db/db_adapter_abstract.php(70): PDO->__construct('sqlite:/storage...', NULL, NULL)
+#1 /storage/emulated/0/www/public/curry/db/db.php(219): DbAdapterAbstract->__construct(Object(ArrayObject))
+#2 /storage/emulated/0/www/public/curry/db/db.php(140): Db::_connect()
+#3 /storage/emulated/0/www/public/curry/core/service.php(31): Db::factory()
+#4 /storage/emulated/0/www/public/curry/core/loader.php(232): Service->__construct()
+#5 /storage/emulated/0/www/public/curry/core/controller.php(311): Loader::getServiceInstance('ItemsService', NULL)
+#6 /storage/emulated/0/www/public/redcurry/app/controllers/items_controller.php(10): Controller->service('ItemsService')
+#7 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->index()
+#8 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#9 {main}
+[2019-06-17 12:49:13] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 1 no such column: CF.id
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('SELECT CF.id,CF...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/curry/db/sql_select.php(464): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/services/pages_service.php(33): SqlSelect->fetchAll()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(29): PagesService->getFields(Array)
+#5 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): PagesController->index()
+#6 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#7 {main}
+[2019-06-17 13:45:00] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 1 ambiguous column name: CF.id
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('SELECT CF.id,CF...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/curry/db/sql_select.php(464): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/services/items_service.php(30): SqlSelect->fetchAll()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/items_controller.php(20): ItemsService->getData(Array)
+#5 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->index()
+#6 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#7 {main}
+[2019-06-17 16:45:13] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/curry_class.php LINE:71 "SqlSelect::fetch" is undefined.
+#0 /storage/emulated/0/www/public/redcurry/app/services/items_service.php(20): CurryClass->__call('fetch', Array)
+#1 /storage/emulated/0/www/public/redcurry/app/controllers/items_controller.php(16): ItemsService->getData(Array)
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->index()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-17 17:04:17] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 1 no such column: data
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('UPDATE items SE...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/redcurry/app/controllers/api/base_controller.php(91): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/api/items_controller.php(38): BaseController->put()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/api/items_controller.php(14): ItemsController->put()
+#5 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->post()
+#6 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#7 {main}
+[2019-06-17 17:37:48] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 1 no such column: data
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('UPDATE items SE...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/redcurry/app/controllers/api/base_controller.php(91): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/api/items_controller.php(38): BaseController->put()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/api/items_controller.php(14): ItemsController->put()
+#5 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->post()
+#6 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#7 {main}
+[2019-06-18 00:35:51] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:661 SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: custom_fields_items.item_id
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(661): PDOStatement->execute()
+#1 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#2 /storage/emulated/0/www/public/redcurry/app/services/items_service.php(118): SqlInsert->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/api/items_controller.php(17): ItemsService->put(Array)
+#4 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->post()
+#5 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#6 {main}
+[2019-06-18 00:39:39] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:661 SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: custom_fields_items.item_id
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(661): PDOStatement->execute()
+#1 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#2 /storage/emulated/0/www/public/redcurry/app/services/items_service.php(118): SqlInsert->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/api/items_controller.php(17): ItemsService->put(Array)
+#4 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->post()
+#5 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#6 {main}
+[2019-06-18 00:39:50] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:661 SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: custom_fields_items.item_id
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(661): PDOStatement->execute()
+#1 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#2 /storage/emulated/0/www/public/redcurry/app/services/items_service.php(118): SqlInsert->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/api/items_controller.php(17): ItemsService->put(Array)
+#4 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->post()
+#5 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#6 {main}
+[2019-06-18 00:58:12] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:661 SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: custom_fields_items.item_id
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(661): PDOStatement->execute()
+#1 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#2 /storage/emulated/0/www/public/redcurry/app/services/items_service.php(119): SqlInsert->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/api/items_controller.php(17): ItemsService->put(Array)
+#4 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->post()
+#5 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#6 {main}
+[2019-06-18 01:01:04] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:661 SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: custom_fields_items.item_id
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(661): PDOStatement->execute()
+#1 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#2 /storage/emulated/0/www/public/redcurry/app/services/items_service.php(118): SqlInsert->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/api/items_controller.php(17): ItemsService->put(Array)
+#4 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->post()
+#5 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#6 {main}
+[2019-06-18 01:03:54] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:661 SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: custom_fields_items.item_id
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(661): PDOStatement->execute()
+#1 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#2 /storage/emulated/0/www/public/redcurry/app/services/items_service.php(118): SqlInsert->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/api/items_controller.php(17): ItemsService->put(Array)
+#4 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->post()
+#5 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#6 {main}
+[2019-06-18 04:27:02] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 1 near " ": syntax error
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('SELECT CF.id,CF...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/curry/db/sql_select.php(464): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/services/items_service.php(36): SqlSelect->fetchAll()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/items_controller.php(56): ItemsService->getData(Array)
+#5 /storage/emulated/0/www/public/redcurry/app/controllers/items_controller.php(46): ItemsController->_add()
+#6 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->index()
+#7 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#8 {main}
+[2019-06-18 04:37:04] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/pages/index.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 04:37:21] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/pages/index.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 04:37:22] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/items/index.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 04:40:49] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/items/index.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 04:47:21] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/items/index.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 04:47:22] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/items/index.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 04:47:38] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/items/list.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 04:48:30] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/items/list.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 04:48:33] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/items/list.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 04:48:34] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/items/list.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 05:02:47] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/curry_class.php LINE:71 "SqlUpdate::Fexecute" is undefined.
+#0 /storage/emulated/0/www/public/redcurry/app/services/items_service.php(107): CurryClass->__call('Fexecute', Array)
+#1 /storage/emulated/0/www/public/redcurry/app/controllers/api/items_controller.php(15): ItemsService->put(Array)
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->post()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 06:06:10] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 1 no such column: ‘type’
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('SELECT * FROM i...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/curry/db/sql_select.php(464): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/models/items.php(27): SqlSelect->fetchAll()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(105): Items->getListByType('page')
+#5 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(46): PagesController->_pageList()
+#6 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): PagesController->index()
+#7 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#8 {main}
+[2019-06-18 06:12:29] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/dispatcher.php LINE:178 The path "custom_fileds/" is not found.
+#0 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#1 {main}
+[2019-06-18 06:12:40] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/dispatcher.php LINE:178 The path "custom_fileds/" is not found.
+#0 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#1 {main}
+[2019-06-18 07:46:34] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/dispatcher.php LINE:178 The path "custom_fileds/" is not found.
+#0 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#1 {main}
+[2019-06-18 07:47:49] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/dispatcher.php LINE:178 The path "custom_fileds/" is not found.
+#0 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#1 {main}
+[2019-06-18 07:47:50] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/dispatcher.php LINE:178 The path "custom_fileds/" is not found.
+#0 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#1 {main}
+[2019-06-18 07:52:06] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 1 no such table: custom_fields
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('SELECT * FROM c...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/curry/db/sql_select.php(464): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/models/custom_fields.php(9): SqlSelect->fetchAll()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/custom_fields_controller.php(65): CustomFields->getList()
+#5 /storage/emulated/0/www/public/redcurry/app/controllers/custom_fields_controller.php(46): CustomFieldsController->_list()
+#6 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): CustomFieldsController->index()
+#7 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#8 {main}
+[2019-06-18 07:54:49] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 11 database disk image is malformed
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('SELECT * FROM c...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/curry/db/sql_select.php(464): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/models/custom_fields.php(9): SqlSelect->fetchAll()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/custom_fields_controller.php(65): CustomFields->getList()
+#5 /storage/emulated/0/www/public/redcurry/app/controllers/custom_fields_controller.php(46): CustomFieldsController->_list()
+#6 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): CustomFieldsController->index()
+#7 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#8 {main}
+[2019-06-18 08:16:40] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/curry_class.php LINE:71 "CustomFieldsController::_edit" is undefined.
+#0 /storage/emulated/0/www/public/redcurry/app/controllers/custom_fields_controller.php(41): CurryClass->__call('_edit', Array)
+#1 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): CustomFieldsController->index()
+#2 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#3 {main}
+[2019-06-18 08:19:38] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 1 near " ": syntax error
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('SELECT CF.id,CF...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/curry/db/sql_select.php(464): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/services/items_service.php(36): SqlSelect->fetchAll()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/items_controller.php(66): ItemsService->getData(Array)
+#5 /storage/emulated/0/www/public/redcurry/app/controllers/items_controller.php(38): ItemsController->_edit()
+#6 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): ItemsController->index()
+#7 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#8 {main}
+[2019-06-18 09:55:12] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 1 near "0": syntax error
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('INSERT INTO cus...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/api/base_controller.php(75): SqlInsert->execute()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/api/custom_fields_controller.php(26): BaseController->post()
+#5 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): CustomFieldsController->post()
+#6 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#7 {main}
+[2019-06-18 09:55:45] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 1 near "0": syntax error
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('INSERT INTO cus...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/api/base_controller.php(75): SqlInsert->execute()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/api/custom_fields_controller.php(26): BaseController->post()
+#5 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): CustomFieldsController->post()
+#6 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#7 {main}
+[2019-06-18 09:57:22] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 1 near "0": syntax error
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('INSERT INTO cus...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/api/base_controller.php(75): SqlInsert->execute()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/api/custom_fields_controller.php(26): BaseController->post()
+#5 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): CustomFieldsController->post()
+#6 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#7 {main}
+[2019-06-18 09:58:30] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 1 near "0": syntax error
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('INSERT INTO cus...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/api/base_controller.php(75): SqlInsert->execute()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/api/custom_fields_controller.php(26): BaseController->post()
+#5 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): CustomFieldsController->post()
+#6 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#7 {main}
+[2019-06-18 10:00:11] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:661 SQLSTATE[HY000]: General error: 20 datatype mismatch
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(661): PDOStatement->execute()
+#1 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#2 /storage/emulated/0/www/public/redcurry/app/controllers/api/base_controller.php(75): SqlInsert->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/api/custom_fields_controller.php(26): BaseController->post()
+#4 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): CustomFieldsController->post()
+#5 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#6 {main}
+[2019-06-18 10:55:44] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/curry_class.php LINE:71 "CustomFields::getData" is undefined.
+#0 /storage/emulated/0/www/public/curry/core/model.php(521): CurryClass->__call('getData', Array)
+#1 /storage/emulated/0/www/public/redcurry/app/controllers/custom_fields_controller.php(68): Model->__call('getData', Array)
+#2 /storage/emulated/0/www/public/redcurry/app/controllers/custom_fields_controller.php(32): CustomFieldsController->_edit()
+#3 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): CustomFieldsController->index()
+#4 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#5 {main}
+[2019-06-18 10:56:00] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/curry_class.php LINE:71 "CustomFields::getData" is undefined.
+#0 /storage/emulated/0/www/public/curry/core/model.php(521): CurryClass->__call('getData', Array)
+#1 /storage/emulated/0/www/public/redcurry/app/controllers/custom_fields_controller.php(68): Model->__call('getData', Array)
+#2 /storage/emulated/0/www/public/redcurry/app/controllers/custom_fields_controller.php(32): CustomFieldsController->_edit()
+#3 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): CustomFieldsController->index()
+#4 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#5 {main}
+[2019-06-18 10:56:30] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/custom_fields/index.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 10:59:21] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/custom_fields/index.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 10:59:23] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/custom_fields/index.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 10:59:41] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/custom_fields/index.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 11:00:34] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/custom_fields/index.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-18 11:01:23] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/view_standard.php LINE:56 The file or directory "/storage/emulated/0/www/public/redcurry/app/views/templates/custom_fields/index.html" does not exist.
+#0 /storage/emulated/0/www/public/curry/core/view_abstract.php(684): ViewStandard->renderTemplateWithLayout()
+#1 /storage/emulated/0/www/public/curry/core/view_abstract.php(665): ViewAbstract->getRendered()
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(272): ViewAbstract->render()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-20 00:17:47] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/curry_class.php LINE:71 "Model::getList" is undefined.
+#0 /storage/emulated/0/www/public/curry/core/model.php(521): CurryClass->__call('getList', Array)
+#1 /storage/emulated/0/www/public/redcurry/app/controllers/api/base_controller.php(57): Model->__call('getList', Array)
+#2 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): BaseController->index()
+#3 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#4 {main}
+[2019-06-20 02:28:40] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/dispatcher.php LINE:178 The path "itens/" is not found.
+#0 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#1 {main}
+[2019-06-20 13:34:34] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/curry_class.php LINE:71 "PagesService::_list" is undefined.
+#0 /storage/emulated/0/www/public/redcurry/app/services/pages_service.php(238): CurryClass->__call('_list', Array)
+#1 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(122): PagesService->import(Array)
+#2 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(38): PagesController->_import()
+#3 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): PagesController->index()
+#4 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#5 {main}
+[2019-06-20 13:35:09] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/curry_class.php LINE:71 "PagesService::list" is undefined.
+#0 /storage/emulated/0/www/public/redcurry/app/services/pages_service.php(238): CurryClass->__call('list', Array)
+#1 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(122): PagesService->import(Array)
+#2 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(38): PagesController->_import()
+#3 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): PagesController->index()
+#4 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#5 {main}
+[2019-06-20 13:35:11] [ERROR] FILE:/storage/emulated/0/www/public/curry/core/curry_class.php LINE:71 "PagesService::list" is undefined.
+#0 /storage/emulated/0/www/public/redcurry/app/services/pages_service.php(238): CurryClass->__call('list', Array)
+#1 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(122): PagesService->import(Array)
+#2 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(38): PagesController->_import()
+#3 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): PagesController->index()
+#4 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#5 {main}
+[2019-06-20 16:48:57] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:661 SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: items_values.item_id
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(661): PDOStatement->execute()
+#1 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#2 /storage/emulated/0/www/public/redcurry/app/services/pages_service.php(259): SqlInsert->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(122): PagesService->import(Array)
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(38): PagesController->_import()
+#5 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): PagesController->index()
+#6 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#7 {main}
+[2019-06-20 16:49:44] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:661 SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: items_values.item_id
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(661): PDOStatement->execute()
+#1 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#2 /storage/emulated/0/www/public/redcurry/app/services/pages_service.php(259): SqlInsert->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(122): PagesService->import(Array)
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(38): PagesController->_import()
+#5 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): PagesController->index()
+#6 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#7 {main}
+[2019-06-20 16:49:46] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:661 SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: items_values.item_id
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(661): PDOStatement->execute()
+#1 /storage/emulated/0/www/public/curry/db/sql_insert.php(87): SqlAbstract->execute()
+#2 /storage/emulated/0/www/public/redcurry/app/services/pages_service.php(259): SqlInsert->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(122): PagesService->import(Array)
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(38): PagesController->_import()
+#5 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): PagesController->index()
+#6 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#7 {main}

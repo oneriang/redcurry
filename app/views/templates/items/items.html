@@ -1,13 +1,22 @@
-<form action="api/items" class="" method="POST" accept-charset="utf-8">
+<form action="api/items" class="rest" method="POST" accept-charset="utf-8">
 	<div class="box">
-		<!--[form:project]-->
+
+		<input type="hidden" name="data[Method]" value="<?php echo $method ?>"/>
+
 		<p>
-			<label for="subject">名前</label>
-			<input name="Items[subject]" maxlength="30" type="text" id="subject">
+			<input type="hidden" name="data[item][id]" maxlength="30" type="text" id="name" value="<?php echo $data['item']['id']; ?>">
+		</p>
+		<p>
+			<label for="name">タイプ</label>
+			<input name="data[item][type]" maxlength="30" type="text" id="type" value="<?php echo $data['item']['type']; ?>">
+		</p>
+		<p>
+			<label for="name">名前</label>
+			<input name="data[item][name]" maxlength="30" type="text" id="name" value="<?php echo $data['item']['name']; ?>">
 		</p>
 		<p>
 			<label for="description">説明</label>
-			<textarea name="Items[description]" class="wiki-edit" rows="5" cols="30" id="description"></textarea>
+			<textarea name="data[item][description]" class="wiki-edit" rows="5" cols="30" id="description"><?php echo $data['item']['description']; ?></textarea>
 		</p>
 		<P>
 			<fieldset class="box">
@@ -17,11 +26,17 @@
 
 				<p>
 					<?php
-					// var_dump($customFields);
+					//var_dump($customFields);
+					$customFields = $data['custom_fields'];
 					$count = count($customFields);
 					for ($i=0; $i<$count; $i++) {
 					echo '<label class="floating">';
-					echo '<input type="checkbox" name="data[Items][custom_field_ids][]" value="' . $customFields[$i]["id"] . '" />';
+					echo '<input type="checkbox" name="data[item][custom_field_ids][]" value="' . $customFields[$i]["id"] . '"';
+					if(isset($customFields[$i]["item_id"]) && is_null($customFields[$i]["item_id"]) == false )
+					{
+					echo ' checked="checked" ';
+					}
+					echo '/>';
 					echo $customFields[$i]["name"];
 					echo '</label>';
 					echo '<span>';
@@ -35,56 +50,6 @@
 		</p>
 		<div class="submit">
 			<input type="submit" value="保存">
-		</div>
-	</div>
-</form>
-
-<form action="api/items" class="rest" method="PUT" accept-charset="utf-8">
-	<div class="box">
-		<!--[form:project]-->
-		<p>
-			<label for="subject">名前</label>
-			<input name="subject" maxlength="30" type="text" id="subject">
-		</p>
-		<p>
-			<label for="description">説明</label>
-			<textarea name="description" class="wiki-edit" rows="5" cols="30" id="description"></textarea>
-		</p>
-		<P>
-			<fieldset class="box">
-				<legend>
-					カスタムフィールド
-				</legend>
-
-				<p>
-					<?php
-					// var_dump($customFields);
-					$count = count($customFields);
-					for ($i=0; $i<$count; $i++) {
-					echo '<label class="floating">';
-					echo '<input type="checkbox" name="data[Items][custom_field_ids][]" value="' . $customFields[$i]["id"] . '" />';
-					echo $customFields[$i]["name"];
-					echo '</label>';
-					}
-					?>
-				</p>
-			</fieldset>
-		</p>
-		<div class="submit">
-			<input type="submit" value="更新">
-		</div>
-	</div>
-</form>
-
-<form action="api/items" class="rest" method="DELETE" accept-charset="utf-8">
-	<div class="box">
-		<!--[form:project]-->
-		<p>
-			<label for="subject">名前</label>
-			<input name="subject" maxlength="30" type="text" id="subject">
-		</p>
-		<div class="submit">
-			<input type="submit" value="削除">
 		</div>
 	</div>
 </form>

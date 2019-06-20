@@ -8,24 +8,25 @@ class CustomFieldsController extends BaseController
 	public function post()
 	{
 		$params = $this -> request -> getRestParams();
-		var_dump($params);
-		
-		if($params['data']['Method'] == 'PUT'){
-    $this -> put();
-            return;
-        }
-        else if($params['data']['Method'] == 'DELETE'){
-    $this -> delete();
-            return;
-        }
-//var_dump($params['data']['CustomField']);
 
-//unset($params['data']['CustomField']['tracker_id']);
+		if ($params['data']['Method'] == 'PUT')
+		{
+			$this -> put();
+			return;
+		}
+		else
+		if ($params['data']['Method'] == 'DELETE')
+		{
+			$this -> delete();
+			return;
+		}
 
-		$this -> values = $params['data']['CustomField'];
-		
-		
-		//var_dump($this -> values);
+		$this -> values = $params['data']['custom_fields'];
+
+		if (isset($this -> values['id']))
+		{
+			unset($this -> values['id']);
+		}
 
 		parent::post();
 	}
@@ -34,15 +35,12 @@ class CustomFieldsController extends BaseController
 	public function put()
 	{
 		$params = $this -> request -> getRestParams();
-var_dump($params);
+		var_dump($params);
 
-		$this -> values = $params['data']['CustomField'];
+		$this -> values = $params['data']['custom_fields'];
 
-		//$this -> values = $params;
+		$this -> where = array('id' => $this -> values['id']);
 
-		$this -> where = array('name' => $this -> values['name']);
-print_r($this -> values);
-print_r($this -> where);
 		parent::put();
 	}
 
@@ -50,16 +48,16 @@ print_r($this -> where);
 	public function delete()
 	{
 		$params = $this -> request -> getRestParams();
-var_dump($params);
+		var_dump($params);
 
 		$this -> values = $params['data']['CustomField'];
 
 		//$this -> values = $params;
 
 		$this -> where = array('name' => $this -> values['name']);
-print_r($this -> values);
-print_r($this -> where);
-		
+		print_r($this -> values);
+		print_r($this -> where);
+
 		parent::delete();
 	}
 

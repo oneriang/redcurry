@@ -8,7 +8,7 @@ class CustomValuesController extends BaseController
 	public function post()
 	{
 		$params = $this -> request -> getRestParams();
-		
+
 		$svc = $this -> service('CustomValuesService');
 		$res = $svc -> post($params);
 		var_dump($res);
@@ -21,7 +21,7 @@ class CustomValuesController extends BaseController
 
 		$this -> values = $params;
 
-		$this -> where = array('subject' => $params['subject']);
+		$this -> where = array('id' => $params['id']);
 
 		parent::put();
 	}
@@ -31,11 +31,9 @@ class CustomValuesController extends BaseController
 	{
 		$params = $this -> request -> getRestParams();
 
-		$this -> where = array('subject' => $params['subject']);
+		$this -> where = array('id' => $params['id']);
 
 		parent::delete();
 	}
-
-
 
 }
