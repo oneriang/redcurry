@@ -1,0 +1,59 @@
+<form action="api/pages" class="rest" method="POST" accept-charset="utf-8">
+	<div class="box">
+
+		<p>
+			<input type="hidden" name="data[page][id]" value="<?php echo $pageId; ?>" id="PageId"/>
+			<input type="hidden" name="data[page][value_id]" value="<?php echo $valueId; ?>" id="ValueId"/>
+		</p>
+
+		<p>
+			<fieldset class="box">
+				<legend>
+					page一覧
+				</legend>
+				<p>
+					<!-- @formatter:off -->
+					<?php
+					
+					echo '<table border="1">';
+					$cnt = count($items);
+					for ($i=0; $i<$cnt; $i++) {
+						if($i == 0){
+							echo '<tr>';
+							foreach ($items[$i] as $key => $value) {
+								echo '<th>';
+								echo $key;
+								echo '</th>';
+							}
+							echo '</tr>';
+						}
+						echo '<tr>';
+						foreach ($items[$i] as $key => $value) {
+							echo '<td>';
+							if($key == 'id')
+							{
+								echo '<a href="'. 'pages?id=' . $value . '&action=edit' . '">';
+									echo $value;
+								echo '</a>';
+							}
+							else
+							{
+								echo $value;
+							}
+							echo '</td>';
+						}
+						echo '</tr>';
+					}
+					echo '</table>';
+					
+					?>
+					<!-- @formatter:off -->
+				</p>
+			</fieldset>
+		</p>
+
+		<div class="submit">
+			<input type="submit" value="保存">
+		</div>
+	</div>
+</form>
