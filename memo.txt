@@ -1,0 +1,12 @@
+SELECT 
+IV.id
+FROM items_values AS IV
+LEFT JOIN items AS I ON I.id = IV.item_id
+LEFT JOIN custom_values AS CV ON CV.item_value_id = IV.id
+AND CV.item_value_id = IV.id
+WHERE (I.id = 46)
+  AND (CV.custom_field_id = 9
+       AND CV.value LIKE '%a%')
+  OR (CV.custom_field_id = 10
+      AND CV.value LIKE '%a%')
+GROUP BY IV.id

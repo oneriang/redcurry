@@ -37,6 +37,9 @@ class PagesController extends RestController
 					case 'import' :
 						$this -> _import();
 						return;
+					case 'search' :
+						$this -> _search();
+						return;
 				}
 			}
 			else
@@ -109,7 +112,7 @@ class PagesController extends RestController
 
 		$this -> view -> setTemplate('page_list');
 		$this -> view -> items = $res;
-		$this -> view -> pageName = $this -> controller;
+		$this -> view -> pageName = 'page-list';//$this -> controller;
 	}
 	
 //
@@ -128,5 +131,23 @@ class PagesController extends RestController
 		$this -> view -> valueId = $params['value_id'];
 		$this -> view -> pageName = $this -> controller;
 	}
+
+//
+	public function _search()
+	{
+		$params = $this -> params;
+
+		$svc = $this -> service('PagesService');
+
+		$res = $svc -> search($params);
+		
+		$this -> view -> setTemplate('list');
+
+		$this -> view -> items = $res;
+		$this -> view -> pageId = $params['id'];
+		$this -> view -> valueId = $params['value_id'];
+		$this -> view -> pageName = $this -> controller;
+	}
+
 
 }

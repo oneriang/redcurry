@@ -389,3 +389,13 @@
 #5 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): PagesController->index()
 #6 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
 #7 {main}
+[2019-06-21 19:28:08] [ERROR] FILE:/storage/emulated/0/www/public/curry/db/sql_abstract.php LINE:696 SQLSTATE[HY000]: General error: 1 near "%": syntax error
+#0 /storage/emulated/0/www/public/curry/db/sql_abstract.php(696): PDO->prepare('SELECT I_SUB.va...')
+#1 /storage/emulated/0/www/public/curry/db/sql_abstract.php(660): SqlAbstract->_createStatement()
+#2 /storage/emulated/0/www/public/curry/db/sql_select.php(464): SqlAbstract->execute()
+#3 /storage/emulated/0/www/public/redcurry/app/services/pages_service.php(370): SqlSelect->fetchAll()
+#4 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(142): PagesService->search(Array)
+#5 /storage/emulated/0/www/public/redcurry/app/controllers/pages_controller.php(41): PagesController->_search()
+#6 /storage/emulated/0/www/public/curry/core/dispatcher.php(237): PagesController->index()
+#7 /storage/emulated/0/www/public/redcurry/htdocs/index.php(24): Dispatcher->dispatch()
+#8 {main}

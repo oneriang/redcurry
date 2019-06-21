@@ -296,5 +296,83 @@ $cris = array_column($cris,'custom_field_id');
 			throw $e;
 		}
 	}
+	
+	public function search($params)
+	{
+		$iv = $this -> model('ItemsValues', 'IV');
+		$cf = $this -> model('CustomFields', 'CF');
+		$cfi = $this -> model('CustomFieldsItems', 'CFI');
+		$cv = $this -> model('CustomValues', 'CV');
+
+		{
+			$sel_cfi = $cfi -> select();
+			$sel_cfi -> fields(array('CFI.custom_field_id','CF.name'));
+			$sel_cfi -> joinLeft($cf, array('CF.id = CFI.custom_field_id'));
+			$sel_cfi -> where('CFI.item_id', $params['id']);
+			$rows_cfi = $sel_cfi -> fetchAll();
+			//var_dump($rows_cfi);
+		}
+
+		{
+			$mdl_i_sub = $this -> model('Items', 'I');
+			$sel_i_sub = $mdl_i_sub -> select();
+			$sel_i_sub -> setJoinAlias('I_SUB');
+			$sel_i_sub -> fields(array(
+				'I.id AS item_id',
+				'CV.item_value_id AS value_id',
+				'CF.id AS custom_field_id',
+				'CV.value'
+			));
+			$sel_i_sub -> joinLeft($cfi, array('CFI.item_id = I.id'));
+			$sel_i_sub -> joinLeft($iv, array('IV.item_id = I.id'));
+			$sel_i_sub -> joinLeft($cf, array('CF.id = CFI.custom_field_id'));
+			$sel_i_sub -> joinLeft($cv, array(
+				'CV.custom_field_id = CF.id',
+				'CV.item_value_id = IV.id'
+			));
+			$sel_i_sub -> where('I.id', $params['id']);
+			if (isset($params['key']) && $params['key'])
+			{
+				//$sel_i_sub -> where('CV.custom_field_id', 9);
+				$sel_i_sub->where('CV.custom_field_id = 9 AND value like :key');
+				$sel_i_sub->orWhere('CV.custom_field_id = 10 AND value like :key'); 
+				$sel_i_sub->params(array( 'key' => '%' . $params['key'].'%'));
+				/*
+				$sel_i_sub -> where('CV.custom_field_id', 9);
+				$sel_i_sub->whereLike('CV.value', '%'. $params['key'] .'%');
+				*/
+			}
+			$sel_i_sub -> order('CV.item_value_id');
+		}
+
+		{
+			$mdl_i_main = $this -> model('Items', 'I_MAIN');
+			$sel_i_main = $mdl_i_main -> select();
+
+			$arr_fields = array();
+			array_push($arr_fields, "I_SUB.value_id");
+
+			$custom_field_id = null;
+			$cnt = count($rows_cfi);
+			for ($i = 0; $i < $cnt; $i++)
+			{
+				// $custom_field_id = $rows_cfi[$i]['custom_field_id'];
+				// array_push($arr_fields, "max( CASE WHEN I_SUB.custom_field_id = '" . $custom_field_id . "' THEN value END ) AS cfi_" . $custom_field_id);
+				$custom_field_id = $rows_cfi[$i]['custom_field_id'];
+				$custom_field_name = $rows_cfi[$i]['name'];
+				array_push($arr_fields, "max( CASE WHEN I_SUB.custom_field_id = '" . $custom_field_id . "' THEN value END ) AS " . $custom_field_name);
+			}
+
+			$sel_i_main -> fields($arr_fields);
+			$sel_i_main -> joinInner($sel_i_sub, array('I_SUB.item_id = I_MAIN.id'));
+			$sel_i_main -> group(array('I_SUB.value_id'));
+		}
+
+		$rows = $sel_i_main -> fetchAll();
+		//var_dump($rows);
+
+		return $rows;
+	}
+	
 
 }
