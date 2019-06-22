@@ -38,6 +38,11 @@ class PagesController extends RestController
 						$this -> _import();
 						return;
 					case 'search' :
+						if (!isset($params['key']))
+						{
+							$this -> _list();
+							return;
+						}
 						$this -> _search();
 						return;
 				}
