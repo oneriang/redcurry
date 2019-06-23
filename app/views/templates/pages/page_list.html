@@ -61,7 +61,7 @@
 <script type="text/x-template" id="page-list-template">
 <div class="q-pa-md">
     <q-table
-      title="Treats"
+      title="ページ一覧"
       :data="data"
       :columns="columns"
       row-key="id"    >
@@ -78,44 +78,34 @@
 				filter : '',
 				rowCount : 10,
 				columns : [{
-					name : 'desc',
+					name : 'id',
 					required : true,
-					label : 'Dessert (100g serving)',
+					label : 'id',
 					align : 'left',
 					sortable : true
 				}, {
-					name : 'calories',
+					name : 'type',
 					align : 'center',
-					label : 'Calories',
-					field : 'calories',
+					label : 'タイプ',
+					field : 'type',
 					sortable : true
 				}, {
-					name : 'fat',
-					label : 'Fat (g)',
-					field : 'fat',
+					name : 'name',
+					label : '名称',
+					field : 'name',
 					sortable : true
 				}, {
-					name : 'carbs',
-					label : 'Carbs (g)',
-					field : 'carbs'
+					name : 'description',
+					label : '説明',
+					field : 'description'
 				}, {
-					name : 'protein',
-					label : 'Protein (g)',
-					field : 'protein'
+					name : 'created_on',
+					label : '作成日',
+					field : 'created_on'
 				}, {
-					name : 'sodium',
-					label : 'Sodium (mg)',
-					field : 'sodium'
-				}, {
-					name : 'calcium',
-					label : 'Calcium (%)',
-					field : 'calcium',
-					sortable : true,
-				}, {
-					name : 'iron',
-					label : 'Iron (%)',
-					field : 'iron',
-					sortable : true,
+					name : 'updated_on',
+					label : '更新日',
+					field : 'updated_on'
 				}],
 				data : [{
 					id : 1,
